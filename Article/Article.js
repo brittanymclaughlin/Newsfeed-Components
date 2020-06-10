@@ -2,6 +2,36 @@
 /* Look over this data, then proceed to line 91*/
 const data = [
   {
+    title: 'Yoda: The Ultimate Teacher',
+    date: 'Jun 6th, 2020',
+    firstParagraph: `Do or do not. There is no try. You must unlearn what you have learned. Named must be your fear before banish it you can. Fear is the path to the dark side. 
+          Fear leads to anger. Anger leads to hate. Hate leads to suffering. That is why you fail. The greatest teacher, failure is. 
+          Pass on what you have learned. May the force be with you.`,
+
+    secondParagraph: `Do or do not. There is no try. You must unlearn what you have learned. Named must be your fear before banish it you can. Fear is the path to the dark side. 
+          Fear leads to anger. Anger leads to hate. Hate leads to suffering. That is why you fail. The greatest teacher, failure is. 
+          Pass on what you have learned. May the force be with you. `,
+
+    thirdParagraph: `Do or do not. There is no try. You must unlearn what you have learned. Named must be your fear before banish it you can. Fear is the path to the dark side. 
+          Fear leads to anger. Anger leads to hate. Hate leads to suffering. That is why you fail. The greatest teacher, failure is. 
+          Pass on what you have learned. May the force be with you.`
+  },
+  {
+    title: 'Cicero Dummy Text',
+    date: 'Jun 6th,2020',
+    firstParagraph: `But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give 
+        you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness.
+        No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally 
+        encounter consequences that are extremely painful.`,
+    secondParagraph: `Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because 
+        it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, 
+        which of us ever undertakes laborious physical exercise, except to obtain some advantage from it?`,
+    thirdParagraph: `But who has any right to find fault with a man 
+        who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure? On the other hand, 
+        we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, 
+        that they cannot foresee`
+  },
+  {
     title: 'Lambda School Students: "We\'re the best!"',
     date: 'Nov 5th, 2018',
     firstParagraph: `Lucas ipsum dolor sit amet ben twi'lek padmé darth darth darth moff hutt organa twi'lek. Ben amidala secura skywalker lando
@@ -111,3 +141,48 @@ const data = [
 
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 */
+let articles = document.querySelector('.articles');
+
+function ArticleCreater(data, x){
+  //create article area
+  let area = document.createElement('div');
+  area.classList.add('article');
+  //add article area to articles area
+  articles.appendChild(area);
+  //create and setup title
+  let title = document.createElement('h2');
+  title.textContent = data[x].title;
+  area.appendChild(title);
+  //create and setup date
+  let dateArea = document.createElement('p');
+  dateArea.classList.add('date');
+  dateArea.textContent = data[x].date;
+  area.appendChild(dateArea);
+  //create and setup the first paragraph 
+  let firstPara = document.createElement('p');
+  firstPara.textContent = data[x].firstParagraph;
+  area.appendChild(firstPara);
+  //Create and setup the second paragraph
+  let secondPara = document.createElement('p');
+  secondPara.textContent = data[x].secondParagraph;
+  area.appendChild(secondPara);
+  //Create and setup the third paragraph
+  let thirdPara = document.createElement('p');
+  thirdPara.textContent = data[x].thirdParagraph;
+  area.appendChild(thirdPara);
+  //Create the "expandButton" span
+  let expand = document.createElement('span');
+  expand.classList.add('expandButton');
+  expand.textContent = "Expand";
+  area.appendChild(expand);
+  expand.addEventListener('click',()=>{
+    area.classList.toggle('article-open');
+  });
+ 
+  return;
+};
+
+for(x=0;x < data.length ; x++){
+ArticleCreater(data,x);
+};
+
